@@ -61,14 +61,64 @@
 
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
 
 </head>
 
 <body>
 
-  <div class="loader">Loading...</div>
+<button class="tablink" onclick="openPage('Dashboard', this, 'white')"id="defaultOpen">Dashboard</button>
+<button class="tablink" onclick="openPage('Space', this, 'white')" >Space</button>
+<button class="tablink" onclick="openPage('Highlight', this, 'white')">Highlight</button>
+<button class="tablink" onclick="openPage('Customer View', this, 'white')">Customer View</button>
+
+<div id="Dashboard" class="tabcontent">
+  
   <div id="map"></div>
   <table id="maptable" class="display"></table>
+</div>
+
+<div id="Space" class="tabcontent">
+  <h3>Space</h3>
+   
+</div>
+
+<div id="Highlight" class="tabcontent">
+  <h3>Highlight</h3>
+  
+</div>
+
+<div id="Customer View" class="tabcontent">
+  <h3>Customer View</h3>
+ 
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+  <div class="loader">Loading...</div>
+  
 
   <script type="text/javascript">
     var map = L.map('map', {
