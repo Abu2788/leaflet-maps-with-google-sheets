@@ -63,6 +63,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
+
 
   
   <style>
@@ -73,7 +78,7 @@
 /* Create two equal columns that floats next to each other */
 .column1 {
   float: left;
-  width: 70%;
+  width: 78%;
  
    overflow-x: hidden;
  
@@ -89,10 +94,37 @@
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
+  background: red;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside:avoid;
+    -moz-page-break-inside:avoid;
+    page-break-inside: avoid;*/
+    display: inline-block;
+    height: 250px;
+    margin-bottom: 20px;
+    width: 100%;
   
 }
+
+.tablink {
+  background-color: #4CAF50;
+  border: none;
+  color: dark grey;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+ 
+  
+ 
+
+
 </style>
   
 
@@ -100,41 +132,64 @@
 
 <body>
 
-<button class="tablink" onclick="openPage('Dashboard', this, 'white')"id="defaultOpen">Dashboard</button>
-<button class="tablink" onclick="openPage('Space', this, 'white')" >Space</button>
-<button class="tablink" onclick="openPage('Highlight', this, 'white')">Highlight</button>
-<button class="tablink" onclick="openPage('Customer View', this, 'white')">Customer View</button>
+<button class="tablink" onclick="openPage('Dashboard', this)"id="defaultOpen">Dashboard</button>
+<button class="tablink" onclick="openPage('Space', this,)">Space</button>
+<button class="tablink" onclick="openPage('Highlight', this, )">Highlight</button>
+<button class="tablink" onclick="openPage('Routing', this, )">Routing</button>
+<button class="tablink" onclick="openPage('Guidance', this, )">Guidance</button>
+<button class="tablink" onclick="openPage('Client', this, )">Client</button>
+<button class="tablink" onclick="openPage('Map Display', this, )">Map Display</button>
+<button class="tablink" onclick="openPage('Search', this, )">Search</button>
+<button class="tablink" onclick="openPage('ADAS', this, )">ADAS</button>
 
-<div class="row">
-  <div class="column1" style="background-color:#aaa;">
+<div class="grid-container">
+  <div class="column1" ">
     <div id="Dashboard" class="tabcontent">
-   <div id="map"></div>
-  <table id="maptable" class="display"></table>
+  <div id="map"></div>
+  <table id="maptable_dashboard" class="display"></table> 
   </div>
-</div>
-
-  
-
 
 <div id="Space" class="tabcontent">
-  <h3>Space</h3>
-   
-</div>
-
-<div id="Highlight" class="tabcontent">
-  <h3>Highlight</h3>
+	<table id="maptable_space" class="display"></table>
+</div>  
+ <div id="Highlight" class="tabcontent">
+   <table id="maptable_highlight" class="display"></table>
   
 </div>
+<div id="Routing" class="tabcontent">
+  <table id="maptable_routing" class="display"></table>
 
-<div id="Customer View" class="tabcontent">
-  <h3>Customer View</h3>
+</div>
+<div id="Guidance" class="tabcontent">
+  <table id="maptable_guidance" class="display"></table>
+
+</div>  
+<div id="Client" class="tabcontent">
+<table id="maptable_client" class="display"></table>
+
+</div>  
+<div id="Map Display" class="tabcontent">
+  
+
+</div> 
+</div>  
+<div id="Search" class="tabcontent">
+  
+
+</div>  
+<div id="ADAS" class="tabcontent">
+  
+
+</div>  
+
+<div class="column2" style="background-color:white;">
+     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTd314G5o4PSP1FfQOLVPrHDe9qxBXsNCNqLtWFrPLtewyHiyt1cyTBDEMaj-fob0NSz8b91Ox2lrck/pubhtml?gid=1265482736&amp;single=true&amp;widget=true&amp;headers=false&chrome=false"width= 100% height=700 frameBorder="0" ></iframe>
+  </div>
  
 </div>
-  </div>
-  <div class="column2" style="background-color:#bbb;">
-     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTd314G5o4PSP1FfQOLVPrHDe9qxBXsNCNqLtWFrPLtewyHiyt1cyTBDEMaj-fob0NSz8b91Ox2lrck/pubhtml?gid=1265482736&amp;single=true&amp;widget=true&amp;headers=false"width="500" height="1000"></iframe>
-  </div>
-</div>
+</div>  
+
+ 
 
 
   
@@ -158,10 +213,23 @@ function openPage(pageName,elmnt,color) {
   }
   document.getElementById(pageName).style.display = "block";
   elmnt.style.backgroundColor = color;
+  
+  $.fn.dataTable    //// - realigns the columns with the rows https://datatables.net/reference/api/fixedColumns().relayout()
+    .tables( { visible: true, api: true } )
+    .columns.adjust()
+    .fixedColumns().relayout();
+  
 }
+
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+
+
+
+
+
 </script>
 
   <div class="loader">Loading...</div>
@@ -176,11 +244,16 @@ document.getElementById("defaultOpen").click();
     }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
   </script>
 
-  <script type="text/javascript" src="./google-doc-url.js"></script>
-  <script type="text/javascript" src="./scripts/constants.js"></script>
-  <script type="text/javascript" src="./scripts/palette.js"></script>
-  <script type="text/javascript" src="./scripts/polylabel.js"></script>
-  <script type="text/javascript" src="./scripts/map.js"></script>
+	<script type="text/javascript" src="./google-doc-url.js"></script>
+	<script type="text/javascript" src="./scripts/constants.js"></script>
+	<script type="text/javascript" src="./scripts/palette.js"></script>
+	<script type="text/javascript" src="./scripts/polylabel.js"></script>
+	<script type="text/javascript" src="./scripts/1map_dashboard.js"></script>
+	<script type="text/javascript" src="./scripts/2map_space.js"></script>
+	<script type="text/javascript" src="./scripts/3map_highlight.js"></script>
+	<script type="text/javascript" src="./scripts/4map_routing.js"></script>
+	<script type="text/javascript" src="./scripts/5map_guidance.js"></script>
+	<script type="text/javascript" src="./scripts/6map_client.js"></script>
 
 </body>
 </html>
