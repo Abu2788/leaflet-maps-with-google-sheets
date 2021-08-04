@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./favicon.png">
+
+  <title>Loading the map...</title>
+
+  <!-- jQuery-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  <!-- Leaflet (CSS and JS) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/fontawesome.min.js"></script>
+
+  <!-- leaflet-providers-->
+  <script src="https://unpkg.com/leaflet-providers@1.10.2/leaflet-providers.js"></script>
+
+  <!-- Leaflet.awesome-markers v2.0.4, manually updated to svg to allow hex and material icons -->
+  <link rel="stylesheet" type="text/css" href="scripts/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+  <script type="text/javascript" src="scripts/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+
+  <!-- Leaflet Markercluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+  <!-- Leaflet Markercluster layer support -->
+  <script src="https://unpkg.com/leaflet.markercluster.layersupport@2.0.1/dist/leaflet.markercluster.layersupport.js"></script>
+
+  <!-- Leaflet control geocoder -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+  <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+
+  <!-- Locate Control -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.72.0/L.Control.Locate.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.72.0/L.Control.Locate.min.js"></script>
+
+  <!-- jQuery-CSV -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js"></script>
+
+  <!-- Custom style sheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
+
+
+  
+  <style>
+  .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+  
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 78%;
+ 
+   overflow-x: scroll;
+ 
+}
+
+.column2 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  overflow-x: visible;
+   
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  background: red;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside:avoid;
+    -moz-page-break-inside:avoid;
+    page-break-inside: avoid;*/
+    display: inline-block;
+    height: 250px;
+    margin-bottom: 20px;
+    width: 100%;
+  
+}
+
+.tablink {
+  background-color: #4CAF50;
+  border: none;
+  color: dark grey;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+ 
+  
+ 
+
+
+</style>
+  
+
+</head>
+
+<body>
+
+<button class="tablink" onclick="openPage('Dashboard', this,'green')"id="defaultOpen">Dashboard</button>
+<button class="tablink" onclick="openPage('Space', this, 'green'), myFunction">Space</button>
+<button class="tablink" onclick="openPage('Highlight', this,'green' )">Highlight</button>
+<button class="tablink" onclick="openPage('Routing', this,'green' )">Routing</button>
+<button class="tablink" onclick="openPage('Guidance', this,'green' )">Guidance</button>
+<button class="tablink" onclick="openPage('Client', this,'green' )">Client</button>
+<button class="tablink" onclick="openPage('Map Display', this,'green' )">Map Display</button>
+<button class="tablink" onclick="openPage('Search', this,'green' )">Search</button>
+<button class="tablink" onclick="openPage('ADAS', this,'green' )">ADAS</button>
+
+<div class="grid-container">
+  <div class="column1" ">
+    <div id="Dashboard" class="tabcontent">
+  <div id="map"></div>
+  <table id="maptable_dashboard" class="display"></table> 
+  </div>
+
+<div id="Space" class="tabcontent">
+	<table id="maptable_space" class="display"></table>
+</div>  
+ <div id="Highlight" class="tabcontent">
+   <table id="maptable_highlight" class="display"></table>
+  
+</div>
+<div id="Routing" class="tabcontent">
+  <table id="maptable_routing" class="display"></table>
+
+</div>
+<div id="Guidance" class="tabcontent">
+  <table id="maptable_guidance" class="display"></table>
+
+</div>  
+<div id="Client" class="tabcontent">
+<table id="maptable_client" class="display"></table>
+
+</div>  
+<div id="Map Display" class="tabcontent">
+  <table id="maptable_map_display" class="display"></table>
+
+</div> 
+ 
+<div id="Search" class="tabcontent">
+  <table id="maptable_search" class="display"></table>
+
+</div>  
+<div id="ADAS" class="tabcontent">
+  <table id="maptable_adas" class="display"></table>
+
+</div>  
+</div> 
+<div class="column2" style="background-color:white;">
+     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTd314G5o4PSP1FfQOLVPrHDe9qxBXsNCNqLtWFrPLtewyHiyt1cyTBDEMaj-fob0NSz8b91Ox2lrck/pubhtml?gid=1265482736&amp;single=true&amp;widget=true&amp;headers=false&chrome=false"width= 100% height=700 frameBorder="0" ></iframe>
+  </div>
+ 
+</div>
+</div>  
+
+ 
+
+
+  
+  
+ 
+   
+ 
+
+
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+  
+  
+  
+  $.fn.dataTable    //// - realigns the columns with the rows https://datatables.net/reference/api/fixedColumns().relayout()
+    .tables( { visible: true, api: true } )
+    .columns.adjust()
+    .fixedColumns().relayout();
+  
+}
+
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+
+
+
+
+</script>
+
+  <div class="loader">Loading...</div>
+  
+
+  <script type="text/javascript">
+    var map = L.map('map', {
+      attributionControl: true,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      tap: true
+    }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
+  </script>
+
+	<script type="text/javascript" src="./google-doc-url.js"></script>
+	<script type="text/javascript" src="./scripts/constants.js"></script>
+	<script type="text/javascript" src="./scripts/palette.js"></script>
+	<script type="text/javascript" src="./scripts/polylabel.js"></script>
+	<script type="text/javascript" src="./scripts/1map_dashboard.js"></script>
+	<script type="text/javascript" src="./scripts/2map_space.js"></script>
+	<script type="text/javascript" src="./scripts/3map_highlight.js"></script>
+	<script type="text/javascript" src="./scripts/4map_routing.js"></script>
+	<script type="text/javascript" src="./scripts/5map_guidance.js"></script>
+	<script type="text/javascript" src="./scripts/6map_client.js"></script>
+	<script type="text/javascript" src="./scripts/7map_map_display.js"></script>
+	<script type="text/javascript" src="./scripts/8map_search.js"></script>
+	<script type="text/javascript" src="./scripts/9map_adas.js"></script>
+	
+
+	
+</body>
+</html>
